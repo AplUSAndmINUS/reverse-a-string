@@ -1,25 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button, Col, Container, Form, Jumbotron, Row } from 'react-bootstrap';
 
 function App() {
+  const [state, setState] = React.useState({
+    string: ''
+  });
+
+  const reverseString = () => {};
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <Jumbotron>
+        <h1>Reverse a string</h1>
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Description: This program takes the string entered and reverses it using JavaScript.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+        <Container fluid p-3>
+          <Row>
+            <Col md='auto'>
+              <Form onSubmit={reverseString}>
+                <Form.Group controlId='formString'>
+                  <Form.Label>String</Form.Label>
+                  <Form.Control
+                    type='text'
+                    name='string'
+                    value={state.string}
+                  />
+                </Form.Group>
+                <Button variant='primary' type='submit'>
+                  Submit
+                </Button>
+                <Button variant='secondary' type='submit'>
+                  Clear
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
+      </Jumbotron>
+    </>
   );
 }
 
